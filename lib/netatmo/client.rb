@@ -10,7 +10,7 @@ module Netatmo
       if @access_token && @expires_at > Time.now
         true
       else
-        get_token
+        fetch_token
       end
     end
 
@@ -18,7 +18,7 @@ module Netatmo
       authenticate
     end
 
-    def get_token
+    def fetch_token
       response = if @refresh_token
                    connection.post '/oauth2/token' do |request|
                      request.body = {
@@ -44,15 +44,15 @@ module Netatmo
       store_token(response)
     end
 
+    # rubocop:disable Naming/AccessorMethodName
     def get_station_data
       response = connection.get '/api/getstationsdata', access_token: @access_token
 
-      if response.status == 200
-        Netatmo::Weather::StationData.new(JSON.parse(response.body)['body'])
-      else
-        raise 'Unauthenticated'
-      end
+      raise 'Unauthenticated' unless response.status == 200
+
+      Netatmo::Weather::StationData.new(JSON.parse(response.body)['body'])
     end
+    # rubocop:enable Naming/AccessorMethodName
 
     private
 
@@ -64,12 +64,12 @@ module Netatmo
     end
 
     def store_token(response)
-      if response.status == 200
-        data = JSON.parse(response.body)
-        @access_token = data['access_token']
-        @refresh_token = data['refresh_token']
-        @expires_at = Time.now + data['expires_in']
-      end
+      return unless response.status == 200
+
+      data = JSON.parse(response.body)
+      @access_token = data['access_token']
+      @refresh_token = data['refresh_token']
+      @expires_at = Time.now + data['expires_in']
     end
   end
 end
