@@ -4,6 +4,19 @@ require 'test_helper'
 
 module Netatmo
   class AdministrativeTest < Minitest::Test
+    USER = {
+      'mail' => 'test@example.org',
+      'administrative' => {
+        'country' => 'CH',
+        'reg_locale' => 'en-CH',
+        'lang' => 'en-US',
+        'unit' => 0,
+        'windunit' => 0,
+        'pressureunit' => 0,
+        'feel_like_algo' => 0
+      }
+    }.freeze
+
     def test_initialize
       administrative = Netatmo::Administrative.new(USER['administrative'])
 
