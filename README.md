@@ -20,13 +20,45 @@ Or install it yourself as:
 
 ## Usage
 
+### Environment variables
+
+| Name                      | Description |
+|---------------------------|-------------|
+| `NETATMO_CLIENT_ID`       | TODO        |
+| `NETATMO_CLIENT_SECRET`   | TODO        |
+| `NETATMO_CLIENT_USERNAME` | TODO        |
+| `NETATMO_CLIENT_PASSWORD` | TODO        |
+
+### Getting a client
+
+To create a Netatmo client you can either set the required environment variables or pass the credentials via a config block to the initialize method.
+
 ```ruby
 
+# if you configured the required ENV variables
 client = Netatmo::Client.new
 
+# or if you want to provide the required credentials
+client = Netatmo::Client.new do |config|
+  config.client_id = ''
+  config.client_secret = ''
+  config.username = ''
+  config.password = ''
+end
+
+```
+
+TODO
+
+```ruby
 station_data = client.get_station_data
 # => #<Netatmo::Weather::StationData @devices=[...] @user=#<Netatmo::User> ...>
 
+```
+
+TODO
+
+```ruby
 station_data.devices
 
 # => [
@@ -34,11 +66,19 @@ station_data.devices
 #      #<Netatmo::Weather::BaseStation @id="12:23:34:45:56:67", @modules=[...] ...>
 #    ]
 
+```
 
+TODO
+
+```ruby
 base_station = station_data.devices.first
 # => #<Netatmo::Weather::BaseStation @id="00:11:22:00:11:22", @code="NAMain", @data_types=["Temperature", "CO2", "Humidity", "Noise", "Pressure"], @modules=[...]>
 
+```
 
+TODO
+
+```ruby
 base_station.modules
 # => [
 #      #<Netatmo::Weather::OutdoorModule @code="NAModule1", @data_types=["Temperature", "Humidity"], ...>,
@@ -46,7 +86,11 @@ base_station.modules
 #      #<Netatmo::Weather::IndoorModule @code="NAModule4", @data_types=["Temperature", "CO2", "Humidity"], ...>,
 #      #<Netatmo::Weather::RainGauge @code="NAModule3", @data_types=["Rain"], ...>
 #    ]
+```
 
+TODO
+
+```ruby
 outdoor = base_station.modules.first
 
 # =>  #<Netatmo::Weather::OutdoorModule
@@ -69,15 +113,38 @@ outdoor = base_station.modules.first
 #       @trend=#<Netatmo::Util::TempTrend @value=1>,
 #       @unit="°C">
 #     >
+```
 
+TODO
+
+```ruby
 outdoor.temperature?
 # => true
+```
 
+TODO
+
+```ruby
 outdoor.temperature
 # => #<Netatmo::DashboardData::Temperature @value=13.6, @min=7.6, @max=13.6, @unit="°C", @time=2020-02-11 10:48:36 +0100, @trend=#<Netatmo::Util::TempTrend @value=1>, ...>
+```
 
+TODO
+
+```ruby
 outdoor.noise?
 # => false
+
+```
+
+TODO
+
+```ruby
+outdoor.values
+# => {
+#      :humidity=>#<Netatmo::DashboardData::Humidity ...>,
+#      :temperature=>#<Netatmo::DashboardData::Temperature ...
+#    }
 
 ```
 
@@ -89,7 +156,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/marcoroth/netatmo.
+Bug reports and pull requests are welcome on GitHub at https://github.com/marcoroth/netatmo-ruby.
 
 ## License
 
