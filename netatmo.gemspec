@@ -19,13 +19,10 @@ Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_dependency 'easy_enum', '~> 0.1.2'
-  s.add_dependency 'faraday'
-  s.add_dependency 'geocoder'
-  s.add_dependency 'lhc'
-  s.add_dependency 'lhs'
-  s.add_dependency 'pry'
-  s.add_dependency 'zeitwerk'
+  s.add_dependency 'easy_enum', '~> 0.1'
+  s.add_dependency 'faraday', '~> 1.0'
+  s.add_dependency 'geocoder', '~> 1.6'
+  s.add_dependency 'zeitwerk', '~> 2.2'
 
   s.add_development_dependency 'bundler', '~> 2.0'
   s.add_development_dependency 'byebug', '~> 11.0'
