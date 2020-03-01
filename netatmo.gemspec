@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.bindir        = 'exe'
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.require_paths = ['lib']
+  s.metadata      = { 'github_repo' => 'https://github.com/marcoroth/netatmo-ruby' }
 
   s.add_dependency 'easy_enum', '~> 0.1'
   s.add_dependency 'faraday', '~> 1.0'
