@@ -1,6 +1,8 @@
 # Netatmo
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/netatmo`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ruby API Wrapper for the [Netatmo API](https://dev.netatmo.com/apidocumentation/).
+
+![Build Status](https://github.com/marcoroth/netatmo-ruby/workflows/Build/badge.svg)
 
 ## Installation
 
@@ -22,33 +24,34 @@ Or install it yourself as:
 
 ### Environment variables
 
-| Name                      | Description |
-|---------------------------|-------------|
-| `NETATMO_CLIENT_ID`       | TODO        |
-| `NETATMO_CLIENT_SECRET`   | TODO        |
-| `NETATMO_CLIENT_USERNAME` | TODO        |
-| `NETATMO_CLIENT_PASSWORD` | TODO        |
+| Name                      | Description            |
+|---------------------------|------------------------|
+| `NETATMO_CLIENT_ID`       | Your app client_id     |
+| `NETATMO_CLIENT_SECRET`   | Your app client_secret |
+| `NETATMO_CLIENT_USERNAME` | User address email     |
+| `NETATMO_CLIENT_PASSWORD` | User password          |
 
-### Getting a client
+### Creating a client
 
 To create a Netatmo client you can either set the required environment variables or pass the credentials via a config block to the initialize method.
 
 ```ruby
-
 # if you configured the required ENV variables
 client = Netatmo::Client.new
 
 # or if you want to provide the required credentials
 client = Netatmo::Client.new do |config|
-  config.client_id = ''
-  config.client_secret = ''
-  config.username = ''
-  config.password = ''
+  config.client_id = '10acb39bc818e5789'
+  config.client_secret = '10dsfxyzbkzva'
+  config.username = 'user@email.address'
+  config.password = 'UserPassword'
 end
 
 ```
 
-TODO
+### Endpoint `/getstationdata`
+
+`get_station_data` Returns all weather stations you have read access to.
 
 ```ruby
 station_data = client.get_station_data
@@ -56,7 +59,9 @@ station_data = client.get_station_data
 
 ```
 
-TODO
+#### Devices
+
+You can access the base stations in the `devices` array.
 
 ```ruby
 station_data.devices
@@ -68,7 +73,7 @@ station_data.devices
 
 ```
 
-TODO
+
 
 ```ruby
 base_station = station_data.devices.first
@@ -76,7 +81,9 @@ base_station = station_data.devices.first
 
 ```
 
-TODO
+#### Modules
+
+All to this base station connected modules are accessible in the `modules` array.
 
 ```ruby
 base_station.modules
@@ -87,8 +94,6 @@ base_station.modules
 #      #<Netatmo::Weather::RainGauge @code="NAModule3", @data_types=["Rain"], ...>
 #    ]
 ```
-
-TODO
 
 ```ruby
 outdoor = base_station.modules.first
@@ -115,29 +120,30 @@ outdoor = base_station.modules.first
 #     >
 ```
 
-TODO
+#### Data Types
+
+You can ask the module if it provides certain data types. 
 
 ```ruby
 outdoor.temperature?
 # => true
 ```
 
-TODO
+```ruby
+outdoor.noise?
+# => false
+```
+
+If the data type is supported you can access the values.
 
 ```ruby
 outdoor.temperature
 # => #<Netatmo::DashboardData::Temperature @value=13.6, @min=7.6, @max=13.6, @unit="°C", @time=2020-02-11 10:48:36 +0100, @trend=#<Netatmo::Util::TempTrend @value=1>, ...>
 ```
 
-TODO
+#### Values
 
-```ruby
-outdoor.noise?
-# => false
-
-```
-
-TODO
+If you want to get a hash of all the available data types on the module you use the `values` method. 
 
 ```ruby
 outdoor.values
