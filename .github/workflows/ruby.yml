@@ -1,4 +1,4 @@
-name: Rake
+name: Build
 on: [push]
 jobs:
   build:
