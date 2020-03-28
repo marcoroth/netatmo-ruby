@@ -1,11 +1,8 @@
 name: Publish Gem
 on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
+
 jobs:
   build:
     name: Build + Publish
@@ -18,7 +15,7 @@ jobs:
       with:
         ruby-version: 2.6.x
 
-    - name: Publish to GPR
+    - name: Publish to GitHub Package Registry
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
