@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 module Netatmo
   module Weather
     class Device
+      extend Forwardable
+
       attr_accessor :id
       attr_accessor :type
       attr_accessor :data_types
@@ -15,6 +19,8 @@ module Netatmo
       attr_accessor :last_message
       attr_accessor :last_seen
       attr_accessor :rf_status
+
+      def_delegators :type, :base_station?, :outdoor_module?, :wind_gauge?, :rain_gauge?, :indoor_module?, :health_coach?
 
       def self.parse(data)
         type = Netatmo::Util::DeviceType.value(data['type'])
@@ -88,7 +94,7 @@ module Netatmo
       end
 
       def battery?
-        respond_to? :battery_status
+        respond_to?(:battery_status)
       end
 
       def data
