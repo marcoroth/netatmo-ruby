@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'easy_enum', '~> 0.1'
   s.add_dependency 'faraday', '~> 1.0'
   s.add_dependency 'geocoder', '~> 1.6'
-  s.add_dependency 'zeitwerk', '~> 2.2'
+  s.add_dependency 'zeitwerk', '~> 2.3'
 
   s.add_development_dependency 'bundler', '~> 2.0'
   s.add_development_dependency 'byebug', '~> 11.0'
