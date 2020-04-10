@@ -56,6 +56,30 @@ module Netatmo
       def name
         station_name
       end
+
+      def outdoor_module
+        modules.find(&:outdoor_module?)
+      end
+
+      def rain_gauge
+        modules.find(&:rain_gauge?)
+      end
+
+      def wind_gauge
+        modules.find(&:wind_gauge?)
+      end
+
+      def health_coach
+        modules.find(&:health_coach?)
+      end
+
+      def indoor_modules
+        modules.select(&:indoor_module?)
+      end
+
+      def first_indoor_module
+        indoor_modules&.first
+      end
     end
   end
 end

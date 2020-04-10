@@ -1,17 +1,20 @@
 # frozen_string_literal: true
 
 require 'netatmo/version'
-require 'netatmo_inflector'
-
 require 'zeitwerk'
-require 'byebug'
-require 'dotenv'
 require 'easy_enum'
 
-Dotenv.load
+inflections = {
+  'na_main' => 'NAMain',
+  'na_module1' => 'NAModule1',
+  'na_module2' => 'NAModule2',
+  'na_module3' => 'NAModule3',
+  'na_module4' => 'NAModule4',
+  'co2' => 'CO2'
+}
 
 @loader = Zeitwerk::Loader.for_gem
-@loader.inflector = NetatmoInflector.new
+@loader.inflector.inflect(inflections)
 @loader.enable_reloading
 @loader.setup
 
