@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'byebug', '~> 11.0'
   s.add_development_dependency 'dotenv', '~> 2.0'
   s.add_development_dependency 'minitest', '~> 5.0'
+  s.add_development_dependency 'pry'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rubocop', '~> 0.81'
 end
