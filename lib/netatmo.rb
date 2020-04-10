@@ -2,11 +2,8 @@
 
 require 'netatmo/version'
 require 'zeitwerk'
-require 'byebug'
-require 'dotenv'
 require 'easy_enum'
 
-Dotenv.load
 inflections = {
   'na_main' => 'NAMain',
   'na_module1' => 'NAModule1',
