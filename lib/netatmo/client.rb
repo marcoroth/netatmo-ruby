@@ -67,13 +67,16 @@ module Netatmo
       store_token(response)
     end
 
-    # rubocop:disable Naming/AccessorMethodName
     def get_station_data
-      response = connection.get('/api/getstationsdata', access_token: @access_token)
+      if authenticate
+        response = connection.get('/api/getstationsdata', access_token: @access_token)
 
-      raise 'Unauthenticated' unless response.status == 200
+        raise 'Got unsuccessful response' unless response.status == 200
 
-      Netatmo::Weather::StationData.new(JSON.parse(response.body)['body'])
+        Netatmo::Weather::StationData.new(JSON.parse(response.body)['body'])
+      else
+        raise 'Unauthenticated'
+      end
     end
     # rubocop:enable Naming/AccessorMethodName
 
@@ -93,6 +96,7 @@ module Netatmo
       @access_token = data['access_token']
       @refresh_token = data['refresh_token']
       @expires_at = Time.now + data['expires_in']
+      puts "successfully stored new access_token: #{@access_token} - expires at #{@expires_at}"
     end
   end
 end
