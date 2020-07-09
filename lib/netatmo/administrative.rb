@@ -2,13 +2,7 @@
 
 module Netatmo
   class Administrative
-    attr_accessor :unit
-    attr_accessor :windunit
-    attr_accessor :pressureunit
-    attr_accessor :lang
-    attr_accessor :reg_locale
-    attr_accessor :country
-    attr_accessor :feel_like
+    attr_accessor :unit, :windunit, :pressureunit, :lang, :reg_locale, :country, :feel_like
 
     def initialize(data)
       self.unit = Netatmo::Util::Unit.value(data['unit'])

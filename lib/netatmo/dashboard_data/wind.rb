@@ -3,15 +3,7 @@
 module Netatmo
   module DashboardData
     class Wind
-      attr_accessor :time
-      attr_accessor :wind_strength
-      attr_accessor :max_wind_strength
-      attr_accessor :max_wind_strength_date
-      attr_accessor :wind_angle
-      attr_accessor :gust_strength
-      attr_accessor :gust_angle
-      attr_accessor :wind_historic
-      attr_accessor :unit
+      attr_accessor :time, :wind_strength, :max_wind_strength, :max_wind_strength_date, :wind_angle, :gust_strength, :gust_angle, :wind_historic, :unit
 
       def initialize(data)
         self.time = Time.at(data['time_utc'])

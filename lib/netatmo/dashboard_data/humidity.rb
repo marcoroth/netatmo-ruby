@@ -3,9 +3,7 @@
 module Netatmo
   module DashboardData
     class Humidity
-      attr_accessor :time
-      attr_accessor :value
-      attr_accessor :unit
+      attr_accessor :time, :value, :unit
 
       def initialize(data)
         self.time = Time.at(data['time_utc'])
