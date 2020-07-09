@@ -7,18 +7,7 @@ module Netatmo
     class Device
       extend Forwardable
 
-      attr_accessor :id
-      attr_accessor :type
-      attr_accessor :data_types
-      attr_accessor :module_name
-      attr_accessor :code
-      attr_accessor :reachable
-      attr_accessor :dashboard_data
-      attr_accessor :firmware
-      attr_accessor :last_setup
-      attr_accessor :last_message
-      attr_accessor :last_seen
-      attr_accessor :rf_status
+      attr_accessor :id, :type, :data_types, :module_name, :code, :reachable, :dashboard_data, :firmware, :last_setup, :last_message, :last_seen, :rf_status
 
       def_delegators :type, :base_station?, :outdoor_module?, :wind_gauge?, :rain_gauge?, :indoor_module?, :health_coach?
 
@@ -110,6 +99,7 @@ module Netatmo
         d
       end
 
+      # REWORK
       def values
         h = {}
         h[:co2] = co2 if co2?

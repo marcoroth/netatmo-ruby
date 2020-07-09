@@ -3,25 +3,8 @@
 module Netatmo
   module Weather
     class BaseStation < Device
-      attr_accessor :cipher_id
-      attr_accessor :date_setup
-      attr_accessor :last_status_store
-      attr_accessor :last_upgrade
-      attr_accessor :co2_calibrating
-      attr_accessor :station_name
-      attr_accessor :friend_users
-      attr_accessor :read_only
-
-      attr_accessor :temperature
-      attr_accessor :co2
-      attr_accessor :humidity
-      attr_accessor :noise
-      attr_accessor :pressure
-
-      attr_accessor :wifi_status
-      attr_accessor :place
-
-      attr_accessor :modules
+      attr_accessor :cipher_id, :date_setup, :last_status_store, :last_upgrade, :co2_calibrating, :station_name, :place,
+                    :friend_users, :read_only, :temperature, :co2, :humidity, :noise, :pressure, :wifi_status, :modules
 
       # DeviceType: NAMain
       def initialize(data)

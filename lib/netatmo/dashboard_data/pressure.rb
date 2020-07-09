@@ -7,11 +7,7 @@ module Netatmo
     class Pressure
       extend Forwardable
 
-      attr_accessor :time
-      attr_accessor :value
-      attr_accessor :absolute_pressure
-      attr_accessor :trend
-      attr_accessor :unit
+      attr_accessor :time, :value, :absolute_pressure, :trend, :unit
 
       def initialize(data)
         self.time = Time.at(data['time_utc'])

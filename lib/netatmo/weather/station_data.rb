@@ -3,8 +3,7 @@
 module Netatmo
   module Weather
     class StationData
-      attr_accessor :user
-      attr_accessor :devices
+      attr_accessor :user, :devices
 
       def initialize(response)
         self.devices = []

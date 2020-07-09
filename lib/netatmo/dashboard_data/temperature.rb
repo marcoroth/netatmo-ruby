@@ -3,14 +3,7 @@
 module Netatmo
   module DashboardData
     class Temperature
-      attr_accessor :time
-      attr_accessor :value
-      attr_accessor :min
-      attr_accessor :max
-      attr_accessor :min_date
-      attr_accessor :max_date
-      attr_accessor :trend
-      attr_accessor :unit
+      attr_accessor :time, :value, :min, :max, :min_date, :max_date, :trend, :unit
 
       def initialize(data)
         self.time = Time.at(data['time_utc'])

@@ -2,8 +2,7 @@
 
 module Netatmo
   class User
-    attr_accessor :mail
-    attr_accessor :administrative
+    attr_accessor :mail, :administrative
 
     def initialize(data)
       self.mail = data['mail']

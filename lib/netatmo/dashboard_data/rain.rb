@@ -3,10 +3,7 @@
 module Netatmo
   module DashboardData
     class Rain
-      attr_accessor :time
-      attr_accessor :value
-      attr_accessor :sum_rain_1
-      attr_accessor :sum_rain_24
+      attr_accessor :time, :value, :sum_rain_1, :sum_rain_24
 
       def initialize(data)
         self.time = Time.at(data['time_utc'])

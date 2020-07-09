@@ -3,9 +3,7 @@
 module Netatmo
   module Weather
     class BatteryDevice < Device
-      attr_accessor :battery_vp
-      attr_accessor :battery_percent
-      attr_accessor :battery_status
+      attr_accessor :battery_vp, :battery_percent, :battery_status
 
       def initialize(data)
         super(data)

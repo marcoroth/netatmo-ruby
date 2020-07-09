@@ -7,6 +7,7 @@ module Netatmo
   class Client
     BASE_URL = 'https://api.netatmo.net'
     attr_accessor :access_token, :refresh_token, :expires_at
+
     Config = Struct.new(:client_id, :client_secret, :username, :password, :base_url)
 
     def initialize(&config_block)
@@ -67,16 +68,15 @@ module Netatmo
       store_token(response)
     end
 
+    # rubocop:disable Naming/AccessorMethodName
     def get_station_data
-      if authenticate
-        response = connection.get('/api/getstationsdata', access_token: @access_token)
+      raise 'Unauthenticated' unless authenticate
 
-        raise 'Got unsuccessful response' unless response.status == 200
+      response = connection.get('/api/getstationsdata', access_token: @access_token)
 
-        Netatmo::Weather::StationData.new(JSON.parse(response.body)['body'])
-      else
-        raise 'Unauthenticated'
-      end
+      raise 'Got unsuccessful response' unless response.status == 200
+
+      Netatmo::Weather::StationData.new(JSON.parse(response.body)['body'])
     end
     # rubocop:enable Naming/AccessorMethodName
 

@@ -7,8 +7,7 @@ module Netatmo
     class BatteryStatus
       extend Forwardable
 
-      attr_accessor :type
-      attr_accessor :value
+      attr_accessor :type, :value
 
       class << self
         attr_accessor :status_values

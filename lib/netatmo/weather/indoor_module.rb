@@ -3,9 +3,7 @@
 module Netatmo
   module Weather
     class IndoorModule < BatteryDevice
-      attr_accessor :temperature
-      attr_accessor :co2
-      attr_accessor :humidity
+      attr_accessor :temperature, :co2, :humidity
 
       # DeviceType: NAModule4
       def initialize(data)
