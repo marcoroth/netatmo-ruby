@@ -6,6 +6,8 @@ module Netatmo
       attr_accessor :time, :wind_strength, :max_wind_strength, :max_wind_strength_date, :wind_angle, :gust_strength, :gust_angle, :wind_historic, :unit
 
       def initialize(data)
+        return if data.nil?
+
         self.time = Time.at(data['time_utc'])
         self.wind_strength = data['WindStrength'].to_f
         self.max_wind_strength = data['max_wind_str'].to_f
