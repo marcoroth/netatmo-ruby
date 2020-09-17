@@ -6,6 +6,8 @@ module Netatmo
       attr_accessor :time, :value, :sum_rain_1, :sum_rain_24
 
       def initialize(data)
+        return if data.nil?
+
         self.time = Time.at(data['time_utc'])
         self.value = data['Rain'].to_f
         self.sum_rain_1 = data['sum_rain_1'].to_f

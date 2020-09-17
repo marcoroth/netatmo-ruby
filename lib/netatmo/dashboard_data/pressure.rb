@@ -10,6 +10,8 @@ module Netatmo
       attr_accessor :time, :value, :absolute_pressure, :trend, :unit
 
       def initialize(data)
+        return if data.nil?
+
         self.time = Time.at(data['time_utc'])
         self.value = data['Pressure'].to_f
         self.absolute_pressure = data['AbsolutePressure'].to_f

@@ -1,3 +1,6 @@
+AllCops:
+  NewCops: enable
+
 Style/Documentation:
   Enabled: false
 
@@ -37,9 +40,6 @@ Style/SlicingWithRange:
 Metrics/AbcSize:
   Max: 200
 
-Metrics/LineLength:
-  Max: 180
-
 Metrics/BlockLength:
   Max: 100
 
@@ -60,15 +60,21 @@ Lint/RaiseException:
 
 Lint/StructNewOverride:
   Enabled: true
-  
+
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
 
+Layout/LineLength:
+  Max: 180
+
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false

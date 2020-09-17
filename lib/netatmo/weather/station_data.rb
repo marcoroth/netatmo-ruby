@@ -11,6 +11,7 @@ module Netatmo
         response['devices'].each do |device|
           devices << Device.parse(device)
         end
+
         self.user = Netatmo::User.new(response['user'])
       end
     end

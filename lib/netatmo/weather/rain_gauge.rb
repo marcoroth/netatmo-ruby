@@ -8,6 +8,7 @@ module Netatmo
       # DeviceType: NAModule3
       def initialize(data)
         super(data)
+
         self.rain = DashboardData::Rain.new(data['dashboard_data'])
       end
     end

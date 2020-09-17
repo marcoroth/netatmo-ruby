@@ -7,6 +7,8 @@ module Netatmo
     attr_accessor :altitude, :city, :country, :location, :timezone
 
     def initialize(data)
+      return if data.nil?
+
       self.altitude = data['altitude']
       self.city = data['city']
       self.country = data['country']

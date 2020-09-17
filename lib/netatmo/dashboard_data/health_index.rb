@@ -10,6 +10,8 @@ module Netatmo
       attr_accessor :time, :value, :unit
 
       def initialize(data)
+        return if data.nil?
+
         self.time = Time.at(data['time_utc'])
         self.value = data['health_idx'].to_i
       end
