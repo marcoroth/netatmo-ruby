@@ -8,6 +8,7 @@ module Netatmo
       # DeviceType: NAModule2
       def initialize(data)
         super(data)
+
         self.wind = DashboardData::Wind.new(data['dashboard_data'])
       end
     end
