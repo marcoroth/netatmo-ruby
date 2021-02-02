@@ -3,7 +3,7 @@
 module Netatmo
   module DashboardData
     class Rain
-      attr_accessor :time, :value, :sum_rain_1, :sum_rain_24
+      attr_accessor :time, :value, :sum_rain_1, :sum_rain_24 # rubocop:disable Naming/VariableNumber
 
       def initialize(data)
         return if data.nil?
