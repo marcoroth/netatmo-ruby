@@ -1,11 +1,4 @@
 version: 2
-registries:
-  git-github-com:
-    type: git
-    url: https://github.com
-    username: marcoroth
-    password: "${{secrets.GIT_GITHUB_COM_PASSWORD}}"
-
 updates:
 - package-ecosystem: bundler
   directory: "/"
@@ -13,8 +6,3 @@ updates:
     interval: daily
     time: "08:00"
     timezone: Europe/Zurich
-  open-pull-requests-limit: 10
-  assignees:
-  - marcoroth
-  registries:
-  - git-github-com
