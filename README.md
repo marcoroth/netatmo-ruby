@@ -28,8 +28,8 @@ Or install it yourself as:
 |---------------------------|------------------------|
 | `NETATMO_CLIENT_ID`       | Your app client_id     |
 | `NETATMO_CLIENT_SECRET`   | Your app client_secret |
-| `NETATMO_CLIENT_USERNAME` | User address email     |
-| `NETATMO_CLIENT_PASSWORD` | User password          |
+| `NETATMO_USERNAME`        | User address email     |
+| `NETATMO_PASSWORD`        | User password          |
 
 ### Creating a client
 
