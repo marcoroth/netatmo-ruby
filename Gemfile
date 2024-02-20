@@ -2,5 +2,12 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in netatmo.gemspec
 gemspec
+
+gem 'bundler', '~> 2.0'
+gem 'byebug', '~> 11.0'
+gem 'dotenv', '~> 2.0'
+gem 'minitest', '~> 5.0'
+gem 'pry'
+gem 'rake', '~> 13.0'
+gem 'rubocop', '~> 1.9'
