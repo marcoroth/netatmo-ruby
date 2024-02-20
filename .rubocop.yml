@@ -1,11 +1,9 @@
 AllCops:
   NewCops: enable
+  TargetRubyVersion: 3.0
   SuggestExtensions: false
 
 Style/Documentation:
-  Enabled: false
-
-Gemspec/RequiredRubyVersion:
   Enabled: false
 
 Metrics/AbcSize:

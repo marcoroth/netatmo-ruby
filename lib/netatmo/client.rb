@@ -27,10 +27,10 @@ module Netatmo
 
     def config
       @config ||= Config.new(
-        ENV['NETATMO_CLIENT_ID'],
-        ENV['NETATMO_CLIENT_SECRET'],
-        ENV['NETATMO_USERNAME'],
-        ENV['NETATMO_PASSWORD'],
+        ENV.fetch('NETATMO_CLIENT_ID', nil),
+        ENV.fetch('NETATMO_CLIENT_SECRET', nil),
+        ENV.fetch('NETATMO_USERNAME', nil),
+        ENV.fetch('NETATMO_PASSWORD', nil),
         BASE_URL
       )
     end
